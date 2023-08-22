@@ -85,7 +85,16 @@ while True:
             btc = get_balance("BTC")
             if btc > 0.00008:
                 upbit.sell_market_order("KRW-BTC", btc*0.9995)
-            k= update_k(7)
+
+            # 현재 날짜와 시간 가져오기
+            current_date_time = datetime.datetime.now()
+
+            # 요일 확인하기 (0: 월요일, 1: 화요일, ..., 6: 일요일)
+            day_of_week = current_date_time.weekday()
+
+            if day_of_week == 1:
+                k= update_k(7)
+                
         time.sleep(1)
     except Exception as e:
         print(e)
